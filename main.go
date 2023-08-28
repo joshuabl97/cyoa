@@ -2,7 +2,9 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	"net/http"
+	"os"
+	"text/template"
 
 	"github.com/joshuabl97/cyoa/story"
 	"github.com/rs/zerolog"
@@ -17,7 +19,13 @@ func main() {
 	story, err := story.ParseJSON(jsonPath)
 	if err != nil {
 		l.Fatal().Err(err).Msg("Failure to parse JSON - exiting program")
+		os.Exit(0)
 	}
 
-	fmt.Printf("Story: %+v", story)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		tmpl := template.Must(template.ParseFiles("cyoa.html"))
+		tmpl.Execute(w, story["intro"])
+	})
+
+	http.ListenAndServe(":8080", nil)
 }
