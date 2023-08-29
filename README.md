@@ -1,7 +1,6 @@
 # Exercise #3: Choose your own adventure
 
-[![exercise status: released](https://img.shields.io/badge/exercise%20status-released-green.svg?style=for-the-badge)](https://gophercises.com/exercises/cyoa) [![demo: ->](https://img.shields.io/badge/demo-%E2%86%92-blue.svg?style=for-the-badge)](https://gophercises.com/demos/cyoa/)
-
+If you navigate to localhost:8080/ after running go run main.go you can play a choose your own adventure game!
 
 ## Exercise details
 
